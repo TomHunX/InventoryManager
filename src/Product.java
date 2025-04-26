@@ -1,11 +1,11 @@
 public class Product {
-    private String Id;
+    private int Id;
     private String Name;
     private Double Price;
     private int Quantity;
 
 
-    Product(String id, String name, Double price, int quantity) {
+    Product(int id, String name, Double price, int quantity) {
         this.Id = id;
         this.Name = name;
         this.Price = price;
@@ -15,11 +15,11 @@ public class Product {
     //Getters & Setters
 
 
-    public String getId() {
+    public int getId() {
         return Id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         Id = id;
     }
 
@@ -28,10 +28,10 @@ public class Product {
     }
 
     public void setName(String name) {
-        if(name == "" || name == null || name.isBlank()) {
+       /* if(name == "" || name == null || name.isBlank()) {
             Name = "Név nélküli termék";
         }
-        else this.Name = name;
+        else */ this.Name = name;
 
     }
 
@@ -40,9 +40,12 @@ public class Product {
     }
 
     public void setPrice(Double price) {
-        if (price < 0) {
+       /* if (price < 0) {
             Price = null;
-        } else this.Price = price;
+        } else */
+            this.Price = price;
+
+
 
     }
 
@@ -56,4 +59,6 @@ public class Product {
             System.out.println(seged);
         } else this.Quantity = quantity;
     }
+
+
 }

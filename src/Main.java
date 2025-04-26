@@ -1,9 +1,14 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-            System.out.println("WELCOME TO INVENTORY MANAGER!");
+        System.out.println("WELCOME TO INVENTORY MANAGER!");
+        System.out.println("---- INVENTORY MANAGER ----");
+
+
+        InventorySystem inventorySystem = new InventorySystem();
+        inventorySystem.start();
 
     }
 }
