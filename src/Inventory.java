@@ -20,6 +20,21 @@ public class Inventory {
     public void removeProductById(int id) {
         products.remove(id);
     }
+
+
+    public void AddingProductQuantity(int id, int quantity) {
+        Product product = products.get(id);
+
+        int currentQuantity = product.getQuantity();
+        if (product!=null) {
+            product.setQuantity(currentQuantity+quantity);
+            System.out.println("Quantity of product in inventory: " + product.getQuantity() + "!");
+        }
+
+    }
+
+
+
     public void sellProductById(int id, int quantity) {
         Product product = products.get(id);
 
@@ -41,10 +56,19 @@ public class Inventory {
         }
 
     }
-    // List elements of inventory
+    // List elements of inventory --- 5. menu
     public void listProducts() {
         for (Product p : products.values()) {
-            System.out.println(p.getId() + " - " + p.getName() + p.getPrice()+" Ft"+" (" + p.getQuantity() + ")");
+            System.out.println(p.getId() + " - " + p.getName()+ " " + p.getPrice()+" Ft"+" (" + p.getQuantity() + " db)");
+        }
+    }
+    // List elements of inventory by Id --- 6. menu
+    public void listProductsById(int id) {
+        for (Product p : products.values()) {
+            if (p.getId() == id) {
+                System.out.println(p.getId() + " - " + p.getName() + " " + p.getPrice()+" Ft"+" ( " + p.getQuantity() + " db )");
+            }
+
         }
     }
 

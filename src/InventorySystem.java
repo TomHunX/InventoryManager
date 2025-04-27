@@ -11,10 +11,11 @@ public class InventorySystem {
         while (running) {
             System.out.println("1. Termék raktárba helyezése");
             System.out.println("2. Termék törlése a raktárból (vonalkód beolvasás)");
-            System.out.println("2. Termék eladás a raktárból (vonalkód beolvasás)");
-            System.out.println("3. Teljes készlet megtekintése");
-            System.out.println("4. Keresés vonalkód alapján");
-            System.out.print("5. Kilépés (mentés)");
+            System.out.println("3. Termék mennyiségének növelése");
+            System.out.println("4. Termék eladás a raktárból (vonalkód beolvasás)");
+            System.out.println("5. Teljes készlet megtekintése");
+            System.out.println("6. Keresés azonosító alapján");
+            System.out.print("7. Kilépés (mentés)");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -27,11 +28,18 @@ public class InventorySystem {
                     handleRemoveProduct();
                     break;
                 case 3:
-                    handleSellProduct();
+                    handleAddingProductQuantity();
+                    break;
                 case 4:
+                    handleSellProduct();
+
+                case 5:
                     inventory.listProducts();
                     break;
-                case 5:
+                case 6:
+                    HandleSearchingById();
+                    break;
+                case 7:
                     running = false;
                     break;
                 default:
@@ -39,15 +47,7 @@ public class InventorySystem {
             }
         }
     }
-
-    private void handleRemoveProduct() {
-        System.out.print("Enter Product ID: ");
-        int Id = scanner.nextInt();
-        inventory.removeProductById(Id);
-        System.out.println("Product Removed successfully!");
-    }
-
-
+ /// 1. menu
     private void handleAddProduct() {
         System.out.print("Enter Product ID: ");
         int Id = scanner.nextInt();
@@ -71,6 +71,24 @@ public class InventorySystem {
         System.out.println("Product added successfully!");
     }
 
+///  2. menu
+    private void handleRemoveProduct() {
+        System.out.print("Enter Product ID: ");
+        int Id = scanner.nextInt();
+        inventory.removeProductById(Id);
+        System.out.println("Product Removed successfully!");
+    }
+///  3. menu
+    private void handleAddingProductQuantity() {
+        System.out.print("Enter Product ID: ");
+        int Id = scanner.nextInt();
+        System.out.print("How many would you like to add?");
+        int quantity = scanner.nextInt();
+        inventory.AddingProductQuantity(Id,quantity);
+        System.out.println("Quantity of product added " + quantity + " successfully!");
+    }
+
+///  4. menu
     private void  handleSellProduct() {
         System.out.print("Enter Product ID: ");
         int Id = scanner.nextInt();
@@ -80,6 +98,11 @@ public class InventorySystem {
         System.out.println("Product sold " + quantity + " successfully!");
     }
 
-
+///  6. menu
+    private void HandleSearchingById() {
+        System.out.print("Enter Product ID: ");
+        int Id = scanner.nextInt();
+        inventory.listProductsById(Id);
+    }
 
 }
